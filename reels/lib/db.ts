@@ -18,7 +18,7 @@ export async function connectToDatabase() {
   // if we dont have promise in cashed then do connection
   if (!cached.promise) {
     const opts = {
-      bufferComands: true,
+      bufferCommands: true,
       maxPoolSize: 10, //how many connection can be possible with db that is define we are getting 10
     };
     cached.promise = mongoose
@@ -32,7 +32,7 @@ export async function connectToDatabase() {
   } catch (error) {
     // otherwise prmoise ko null kardo
     cached.promise = null;
-    throw new Error("Check database file");
+    throw error;
   }
 
   return cached.conn;
